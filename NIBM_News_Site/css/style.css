@@ -1,0 +1,12 @@
+.row {
+    display: inline-flex !important;
+}
+
+.mainContainer {
+    margin: auto !important;
+    width: 80% !important;
+}
+
+.center {
+    width: 80% !important;
+}
