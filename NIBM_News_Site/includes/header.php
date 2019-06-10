@@ -1,3 +1,13 @@
+<?php
+
+            session_start();
+            if(isset($_SESSION["uname"])){
+            $_SESSION["uname"];
+            $_SESSION["uemail"];
+            }
+            
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,16 +53,26 @@
           <li class="nav-item">
             <a class="nav-link" href="about.php">About</a>
           </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="contact.php">New Post</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="register.php">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login.php">Login</a>
-          </li>
+          <?php
+          if(isset($_SESSION["uname"])){
+            echo "<li class='nav-item'>
+                    <a class='nav-link' href='contact.php'>New Post</a>
+                  </li>
+                  <li class='nav-item'>
+                    <a class='nav-link' href='logout.php'>logout</a>
+                  </li>";
+          }
+          ?>
+
+          <?php
+          if(!isset($_SESSION["uname"]))
+          echo "<li class='nav-item'>
+                  <a class='nav-link' href='register.php'>Register</a>
+                </li>
+                <li class='nav-item'>
+                  <a class='nav-link' href='login.php'>Login</a>
+                </li>";
+          ?>
         </ul>
       </div>
     </div>

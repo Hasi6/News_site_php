@@ -1,5 +1,7 @@
 <?php
     require_once("./includes/header.php");
+  
+
 ?>
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('img/home-bg.jpg')">
@@ -8,7 +10,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Clean Blog</h1>
+            <h1>Welcome <?php if(isset($_SESSION['uname'])){echo $_SESSION['uname'];} else{echo "Guest";} ?></h1>
             <span class="subheading">A Blog Theme by Start Bootstrap</span>
           </div>
         </div>
@@ -25,7 +27,7 @@
           ?>
           <?php
 
-              $query = "SELECT * FROM posts ORDER BY date DESC";
+              $query = "SELECT * FROM posts ORDER BY date DESC LIMIT 0,12";
 
               $results = mysqli_query($con, $query);
 
@@ -44,13 +46,16 @@
                   </h3>
                 </a>
                 <p class='post-meta'>Posted by
-                    <a href='#'>".$row["username"]."</a>
+                    <a href='users.php?uname=".$row["username"]."'>".$row["username"]."</a>
                     ".$row["date"]."</p>
                     </div>
                     <hr>
                     </div>
                       </div>
                     ";
+              }
+              if(mysqli_fetch_array($results) <=0){
+                echo "<p>No More Posts Found</p>";
               }
 
           ?>

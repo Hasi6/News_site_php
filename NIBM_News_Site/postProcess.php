@@ -1,11 +1,17 @@
 <?php
-    require_once("./database/config.php");    
+    require_once("./database/config.php");
+    
+    session_start();
+            if(isset($_SESSION["uname"])){
+            $_SESSION["uname"];
+            $_SESSION["uemail"];
+            }
 ?>
 
 <?php
 
     if(isset($_POST["post"])){
-        $um = $_POST["username"];
+        $um = $_SESSION["uname"];
         $ti = $_POST["title"];
         $st = $_POST["subtitle"];
         $ps = $_POST["body"];

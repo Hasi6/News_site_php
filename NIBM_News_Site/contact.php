@@ -25,13 +25,7 @@
         <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
         <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
         <form name="sentMessage" id="contactForm" action="postProcess.php" method="POST" novalidate enctype="multipart/form-data">
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <label>Username</label>
-              <input type="text" class="form-control" placeholder="Username" id="name" name="username" required data-validation-required-message="Please enter your name.">
-              <p class="help-block text-danger"></p>
-            </div>
-          </div>
+          
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Title</label>
