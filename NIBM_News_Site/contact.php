@@ -1,5 +1,10 @@
 <?php
     require_once("./includes/header.php");
+
+    if(!isset($_SESSION["uname"])){
+      header("Location:index.php");
+      exit();
+    }
 ?>
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('img/contact-bg.jpg')">

@@ -33,9 +33,9 @@
 
               while($row = mysqli_fetch_array($results)){
                   echo "
-                  <div class='row'>
+                  <div class='row row1'>
                   <div class='col-md-12'>
-                  <div class='post-preview'>
+                  <div class='post-preview post-body'>
                   <img src=".$row["image"]." class='image' style='width: 400px;height: 300px'>
                   <a href='post.php?id=".$row["id"]. "'>
                   <h2 class='post-title'>"

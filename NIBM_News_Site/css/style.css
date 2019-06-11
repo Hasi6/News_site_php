@@ -1,12 +1,17 @@
-.row {
+.row1 {
     display: inline-flex !important;
 }
 
 .mainContainer {
     margin: auto !important;
-    width: 80% !important;
+    width: 85% !important;
 }
 
 .center {
     width: 80% !important;
+}
+
+.post-body {
+    margin: 0 auto;
+    width: 80%;
 }
