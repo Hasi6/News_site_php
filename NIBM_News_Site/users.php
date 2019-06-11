@@ -8,7 +8,7 @@
     }
 
     if(!isset($_GET["uname"])){
-        echo "No Users Found";
+      header("Location:pageNotFound.php");
         exit();
     }
     $uname = $_GET["uname"];
@@ -17,8 +17,7 @@
     $results = mysqli_query($con, $query);
 
     if(mysqli_num_rows($results) <=0){
-        echo "No Users Found";
-        exit();
+        header("Location:pageNotFound.php");
     }
 
     $row = mysqli_fetch_array($results);
@@ -54,12 +53,45 @@
   </header>
 
   <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-      </div>
-    </div>
-  </div>
+  <?php
+
+              $query = "SELECT * FROM posts WHERE username='$uname' ORDER BY date DESC";
+
+              $results = mysqli_query($con, $query);
+              $row = mysqli_fetch_array($results);
+              while($row = mysqli_fetch_array($results)){
+                  echo "
+                  <div class='row row1'>
+                  <div class='col-md-12'>
+                  <div class='post-preview post-body'>
+                  <img src=".$row["image"]." class='image' style='width: 400px;height: 300px'>
+                  <a href='post.php?id=".$row["id"]. "'>
+                  <h2 class='post-title'>"
+                  .$row["title"] ."
+                  </h2>
+                  <h3 class='post-subtitle'>"
+                  .$row["subtitle"] ."
+                  </h3>
+                </a>
+                <p class='post-meta'>Posted by
+                    <a href='users.php?uname=".$row["username"]."'>".$row["username"]."</a>
+                    ".$row["date"]."</p>
+                    ";
+                    if($row["username"] == $_SESSION["uname"]){
+                      echo "<a class='btn btn-danger btn-block' href=deletePost.php?id=".$row["id"].">Delete Post</a>
+                      <hr>
+                      </div>
+                        </div>
+                        </div>
+                      ";
+                    }
+                    
+              }
+              if(mysqli_fetch_array($results) <=0){
+                echo "<p>No More Posts Found</p>";
+              }
+
+          ?>
 
   
 

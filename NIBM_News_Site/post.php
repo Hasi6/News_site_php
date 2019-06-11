@@ -66,6 +66,12 @@
     </div>
   </article>
               <hr>
+              <?php
+                if(!isset($_SESSION["uname"])){
+                  require_once("./includes/footer.php");
+                  exit();
+                }
+              ?>
   <!-- comment Section -->
   <div class="container">
     <form action="#" method="POST">
@@ -90,7 +96,7 @@
   <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <?php
-            $postId = $details["id"];
+          $postId = $_GET["id"];
             $query1 = "SELECT * FROM comments WHERE postId='$postId' ORDER BY date DESC";
             $results1 = mysqli_query($con, $query1);
             
@@ -108,7 +114,7 @@
             $username = $_SESSION["uname"];
 
             while($row1 = mysqli_fetch_array($results1)){
-              echo "<img src="."".$rowGetProPic["image"]." style='width:75px;border-radius:50%'> <a href=''>".$row1["userFrom"]."</a>";
+              echo "<img src="."".$rowGetProPic["image"]." style='width:75px;border-radius:50%'> <a href='users.php?uname=".$rowGetProPic["username"]."'>".$row1["userFrom"]."</a>";
               echo "<p>".$row1["body"]."</p>";
               echo "<p>".$row1["date"]."</p>";
               if(($username == $row1["userFrom"])){
@@ -124,9 +130,7 @@
 
   <!-- add comments to database -->
   <?php
-if(!isset($_SESSION["uname"])){
-    header("Location:post.php");
-}
+
 
 if(!isset($_GET["id"])){
     header("Location:post.php");
