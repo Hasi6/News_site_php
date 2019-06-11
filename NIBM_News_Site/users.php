@@ -41,8 +41,8 @@
             <span class="subheading"><?php echo $email ?></span>
 
             <?php
-                if($_SESSION["uname"] === $uname ){
-                    echo "<button class='btn btn-info mt-4' id='edit'>Edit Details</button>";
+                if($_SESSION["uname"] == $uname ){
+                    echo "<a class='btn btn-info mt-4' id='edit' href='editUser.php?uname=".$uname."'>Edit Details</a>";
                 }
             ?>
 
@@ -78,7 +78,8 @@
                     ".$row["date"]."</p>
                     ";
                     if($row["username"] == $_SESSION["uname"]){
-                      echo "<a class='btn btn-danger btn-block' href=deletePost.php?id=".$row["id"].">Delete Post</a>
+                      echo "<a class='btn btn-warning btn-block' href=editPost.php?id=".$row["id"].">Edit Post</a>
+                      <a class='btn btn-danger btn-block' href=deletePost.php?id=".$row["id"].">Delete Post</a>
                       <hr>
                       </div>
                         </div>

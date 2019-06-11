@@ -44,8 +44,8 @@
               <!-- check username and display edit button -->
               <?php
                 if(isset($_SESSION["uname"])){
-                  if( $_SESSION["uname"]== $details['username']){
-                  echo "<button class='btn btn-info mt-4' id='edit'>Edit Post</button>";
+                  if( $_SESSION["uname"] == $details['username']){
+                  echo "<a class='btn btn-info mt-4' href='editPost.php?id=$id' id='edit'>Edit Post</a>";
                 }
               }
               ?>
