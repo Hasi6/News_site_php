@@ -19,6 +19,10 @@
             echo "<script>window.open('adminLog.php', '_self')</script>";
             exit();
         }
+
+        session_start();
+        $_SESSION["uname"] = "admin";
+        $_SESSION["uemail"] = "admin@gmail.com";
         echo "<script>window.open('admin.php', '_self')</script>";
 
     }
