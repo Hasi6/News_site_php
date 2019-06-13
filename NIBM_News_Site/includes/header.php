@@ -33,6 +33,9 @@
   <!-- Custom styles for this template -->
   <link href="css/clean-blog.min.css" rel="stylesheet">
 
+  <!-- css search bar -->
+  <link rel="stylesheet/css" type="text/css" href="./css/searchBar.css">
+
 
 </head>
 
@@ -46,8 +49,16 @@
         Menu
         <i class="fas fa-bars"></i>
       </button>
+            
+
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <!-- search -->
+        <form action="search.php" method="POST" class="searchForm">
+          <input type="text" class="textbox" placeholder="Search" required name="keyword">
+          <input title="Search" value="" type="submit" class="button" required name="searchBtn">
+        </form>
+
           <li class="nav-item">
             <a class="nav-link" href="index.php">Home</a>
           </li>
